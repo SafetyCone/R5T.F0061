@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +12,28 @@ namespace R5T.F0061
 	[FunctionalityMarker]
 	public partial interface IOperations : IFunctionalityMarker
 	{
+		public void WriteLinesAndOpenInNotepadPlusPlus(
+			IEnumerable<string> lines,
+			string resultFilePath)
+        {
+			Instances.FileOperator.WriteLines(
+				resultFilePath,
+				lines);
+
+			Instances.NotepadPlusPlusOperator.Open(
+				resultFilePath);
+		}
+
+		public void WriteLinesAndOpenInNotepadPlusPlus(
+			IEnumerable<string> lines)
+		{
+			var resultFilePath = Instances.FilePaths.OutputTextFilePath;
+
+			this.WriteLinesAndOpenInNotepadPlusPlus(
+				lines,
+				resultFilePath);
+		}
+
 		public void WriteResultAndOpenInNotepadPlusPlus(
 			Result result,
 			string resultFilePath,
