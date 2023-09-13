@@ -16,7 +16,7 @@ namespace R5T.F0061
 			IEnumerable<string> lines,
 			string resultFilePath)
         {
-			Instances.FileOperator.WriteLines(
+			Instances.FileOperator.Write_Lines_Synchronous(
 				resultFilePath,
 				lines);
 
